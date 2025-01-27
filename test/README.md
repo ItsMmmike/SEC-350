@@ -8,7 +8,7 @@ To Use:
 cd /etc/yum.repos.d
 
 # Copy configs to system
-sudo wget "https://raw.githubusercontent.com/ItsMmmike/SEC-350/refs/heads/main/test/CentOS.repo"
+sudo wget "https://raw.githubusercontent.com/ItsMmmike/SEC-350/refs/heads/main/test/CentOS.repo"; mv CentOS.repo CentOS-Base.repo
 
 ### ^^^ Strongly reccomend making a backup of "/etc/yum.repos.d/CentOS-Base.Repo" before overwriting file
 
