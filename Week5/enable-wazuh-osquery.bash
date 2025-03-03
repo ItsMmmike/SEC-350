@@ -1,6 +1,6 @@
 #!/bin/bash
 # Script used to configure the OSQuery service on a Rocky-Based System and Update the Wazuh-Agent Configuration to send osquery event logs to Wazuh Server
-# To Use: Download and run script as sudo user --> "sudo wget https://raw.githubusercontent.com/ItsMmmike/SEC-350/refs/heads/main/Week5/enable-wazuh-osquery.bash && sudo bash ./enable-wazuh-osquery.bash"
+# To Use: Download and run script as sudo user --> "sudo curl -O https://raw.githubusercontent.com/ItsMmmike/SEC-350/refs/heads/main/Week5/enable-wazuh-osquery.bash && sudo bash ./enable-wazuh-osquery.bash"
 
 # Source Reference: https://documentation.wazuh.com/4.7/user-manual/capabilities/malware-detection/osquery.html#configuration
 
