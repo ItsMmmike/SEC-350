@@ -67,7 +67,7 @@ set firewall name LAN-to-DMZ rule 11 action 'accept'
 set firewall name LAN-to-DMZ rule 11 description 'Allow LAN to DMZ SSH from Mgmt01'
 set firewall name LAN-to-DMZ rule 11 destination port '22'
 set firewall name LAN-to-DMZ rule 11 protocol 'tcp'
-set firewall name LAN-to-DMZ rule 11 source destination address '172.16.150.10'
+set firewall name LAN-to-DMZ rule 11 source address '172.16.150.10'
 
 ## LAN-to-WAN
 set firewall name LAN-to-WAN default-action drop
