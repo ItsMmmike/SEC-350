@@ -3,7 +3,7 @@
 
 # Update Packages and install dhcpd
 sudo apt update
-sudp apt install isc-dhcp-server -y
+sudo apt install isc-dhcp-server -y
 
 # Download dhcpd config file
 sudo wget -O /etc/dhcp/dhcpd.conf "https://raw.githubusercontent.com/ItsMmmike/SEC-350/refs/heads/main/Week7/dhcp01/dhcpd.conf"
