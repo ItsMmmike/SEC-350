@@ -1,5 +1,18 @@
 #!/bin/bash
+# Script used to setup nginx and wazuh agent service onto the dhcp01 device --> **Run as standard user
 
+# Update Packages and install dhcpd
+sudo apt update
+sudo apt install nginx -y
+
+# Download Nginx Config Files
+sudo wget -O <file> "https://raw.githubusercontent.com/ItsMmmike/SEC-350/refs/heads/main/Week7/nginx01/nginx.conf"
+sudo wget -O <file> "https://raw.githubusercontent.com/ItsMmmike/SEC-350/refs/heads/main/Week7/nginx01/index.html"
+sudo wget -O <file> "https://raw.githubusercontent.com/ItsMmmike/SEC-350/refs/heads/main/Week7/nginx01/cool-image.png"
+
+# Enable and Start server
+sudo systemctl enable nginx
+sudo systemctl start nginx
 
 # Set Hostname
 sudo hostnamectl set-hostname dhcp01-michael
