@@ -1,13 +1,13 @@
 #!/bin/vbash
 # Script use to configure Vyos Firewall/Router for SEC-350
 
+# Need to source vyos script commands from this file below
+source /opt/vyatta/etc/functions/script-template
+
 # Prevent Script from running without the "vyattacfg" user group permission applied
 if [ "$(id -g -n)" != 'vyattacfg' ] ; then
     exec sg vyattacfg -c "/bin/vbash $(readlink -f $0) $@"
 fi
-
-# Need to source vyos script commands from this file below
-source /opt/vyatta/etc/functions/script-template
 
 # Configuration commands go here VVV
 configure
