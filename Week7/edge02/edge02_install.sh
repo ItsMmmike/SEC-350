@@ -27,7 +27,7 @@ set system name-server '10.0.17.2'
 set protocols static route 0.0.0.0/0 next-hop 10.0.17.2
 
 # Set Hostname
-set system hsot-name 'edge02-michael'
+set system host-name 'edge02-michael'
 
 # Apply Initial Network Config
 commit
