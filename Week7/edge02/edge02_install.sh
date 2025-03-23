@@ -1,13 +1,13 @@
 #!/bin/vbash
 # Script use to configure Vyos Firewall/Router for SEC-350
 
-# Need to source vyos script commands from this file below
-source /opt/vyatta/etc/functions/script-template
-
 # Prevent Script from running without the "vyattacfg" user group permission applied
 if [ "$(id -g -n)" != 'vyattacfg' ] ; then
     exec sg vyattacfg -c "/bin/vbash $(readlink -f $0) $@"
 fi
+
+# Need to source vyos script commands from this file below
+source /opt/vyatta/etc/functions/script-template
 
 # Configuration commands go here VVV
 configure
@@ -25,6 +25,9 @@ set system name-server '10.0.17.2'
 
 # Default Gateway
 set protocols static route 0.0.0.0/0 next-hop 10.0.17.2
+
+# Set Hostname
+set system hsot-name 'edge02-michael'
 
 # Apply Initial Network Config
 commit
@@ -68,7 +71,8 @@ set nat destination rule 15 translation port '22'
 set protocols rip interface eth2
 set protocols rip network '172.16.50.0/29'
 
-# Set SSH Listen Address to LAN
+# Set SSH Listen Address to LAN only
+delete service ssh listen-address '0.0.0.0'
 set service ssh listen-address '172.16.150.2'
 
 # Save Configuration
