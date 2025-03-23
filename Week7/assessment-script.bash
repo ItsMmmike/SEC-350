@@ -7,12 +7,6 @@
 # * Local Priv Users successfully created & added to groups
 # * Mgmt01 can connect to target systems
 
-# Download Script Files to local system
-wget "https://raw.githubusercontent.com/ItsMmmike/SEC-350/refs/heads/main/Week7/dhcp01/dhcp01_install.bash"
+# Download Script Files and remotely run on target system
+ssh -t michael@172.16.150.5 "wget -O /home/michael/dhcp01_install.bash 'https://raw.githubusercontent.com/ItsMmmike/SEC-350/refs/heads/main/Week7/dhcp01/dhcp01_install.bash' && sudo bash /home/michael/dhcp01_install.bash; rm /home/michael/dhcp01_install.bash"
 #wget ""
-
-# Remotely run scripts on target systems via SSH
-ssh michael@172.16.150.5 "sudo bash -s" < ./dhcp01_install.bash
-
-# Remove scirpt files after they are run
-rm ./dhcp01_install.bash
