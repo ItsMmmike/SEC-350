@@ -4,6 +4,7 @@
 # Update Packages and install dhcpd
 sudo apt update
 sudo apt install nginx -y
+sudo apt install vim -y
 
 # Download Nginx Config Files
 sudo wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/ItsMmmike/SEC-350/refs/heads/main/Week7/nginx01/nginx.conf"
