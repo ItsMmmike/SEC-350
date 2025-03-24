@@ -7,6 +7,9 @@
 # * Local Priv Users successfully created & added to groups
 # * Mgmt01 can connect to target systems
 
-# Download Script Files and remotely run on target system
-ssh -t michael@172.16.150.5 "wget -O /home/michael/dhcp01_install.bash 'https://raw.githubusercontent.com/ItsMmmike/SEC-350/refs/heads/main/Week7/dhcp01/dhcp01_install.bash' && sudo bash /home/michael/dhcp01_install.bash; rm /home/michael/dhcp01_install.bash"
-#wget ""
+# Troubleshooting: Remove old ssh fingerprints
+# ssh-keygen -f "/home/michael/.ssh/known_hosts" -R "<IP_of_remote-host_here>"
+
+## Download Script Files and remotely run on target system
+ssh -t michael@172.16.150.5 "wget 'https://raw.githubusercontent.com/ItsMmmike/SEC-350/refs/heads/main/Week7/dhcp01/dhcp01_install.bash' && sudo bash dhcp01_install.bash; rm dhcp01_install.bash"
+ssh -t michael@172.16.50.3 "wget 'https://raw.githubusercontent.com/ItsMmmike/SEC-350/refs/heads/main/Week7/nginx01/nginx01_install.bash' && sudo bash nginx01_install.bash; rm nginx01_install.bash"
