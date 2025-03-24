@@ -15,7 +15,7 @@ sudo systemctl enable nginx
 sudo systemctl restart nginx
 
 # Set Hostname
-sudo hostnamectl set-hostname dhcp01-michael
+sudo hostnamectl set-hostname nginx01-michael
 
 # Wazuh agent install (Debian)
 wget https://packages.wazuh.com/4.x/apt/pool/main/w/wazuh-agent/wazuh-agent_4.7.5-1_amd64.deb && sudo WAZUH_MANAGER='172.16.200.10' WAZUH_AGENT_GROUP='linux' dpkg -i ./wazuh-agent_4.7.5-1_amd64.deb
