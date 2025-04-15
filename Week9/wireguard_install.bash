@@ -9,16 +9,16 @@
 # Installing Wireguard packages
 curl -Lo /etc/yum.repos.d/wireguard.repo https://copr.fedorainfracloud.org/coprs/jdoss/wireguard/repo/epel-7/jdoss-wireguard-epel-7.repo
 
-sudo yum update
-sudo yum install wireguard-dkms wireguard-tools
-sudo yum install epel-release
+sudo yum update -y
+sudo yum install wireguard-dkms wireguard-tools -y
+sudo yum install epel-release -y
 
 # Var used to retrieve the name of the local active network adapter
 netadapter=$(ip a | awk '/inet.*brd/{print $NF}')
 
 # Generate Private/Public KeyPairs for Wireguard Server & Client
-sudo wg keygen | sudo tee /etc/wireguard/srvkey-private | wg pubkey | sudo tee /etc/wireguard/srvkey-public
-sudo wg keygen | sudo tee /etc/wireguard/client01-private | wg pubkey | sudo tee /etc/wireguard/client01-public
+sudo wg genkey | sudo tee /etc/wireguard/srvkey-private | sudo wg pubkey | sudo tee /etc/wireguard/srvkey-public
+sudo wg genkey | sudo tee /etc/wireguard/client01-private | sudo wg pubkey | sudo tee /etc/wireguard/client01-public
 
 # Server Configuration
 sudo cat > /etc/wireguard/wg0.conf << EOF
@@ -27,9 +27,9 @@ Address = 10.10.10.1/24
 SaveConfig = true
 ServerKey = $(sudo cat /etc/wireguard/srvkey-private)
 PreUp = sysctl -w net.ipv4.ip_forward=1
-PreUp = iptables -t nat -A PREROUTING -p tcp -d 10.10.10.1 --dport 3389 -j DNAT --to-destination 172.16.200.11.3389
+PreUp = iptables -t nat -A PREROUTING -p tcp -d 10.10.10.1 --dport 3389 -j DNAT --to-destination 172.16.200.11:3389
 PreUp = iptables -t nat -A POSTROUTING -o $netadapter
-PostDown = iptables -t nat -D PREROUTING -p tcp -d 10.10.10.1 --dport 3389 -j DNAT --to-destination 172.16.200.11.3389
+PostDown = iptables -t nat -D PREROUTING -p tcp -d 10.10.10.1 --dport 3389 -j DNAT --to-destination 172.16.200.11:3389
 PostDown = iptables -t nat -D POSTROUTING -o $netadapter
 
 [Peer]
