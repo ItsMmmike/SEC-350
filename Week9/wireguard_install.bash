@@ -51,9 +51,9 @@ PersistentKeepalive = 25
 EOF
 
 # Firewalld config
-sudo firewall-cmd --permanetn --zone=public --add-port=51820/udp
+sudo firewall-cmd --permanent --zone=public --add-port=51820/udp
 sudo firewall-cmd --permanent --add-interface=wg0 --zone=internal
-sudo firewall-cmd --permanetn --zone=internal --add-masquerade
+sudo firewall-cmd --permanent --zone=internal --add-masquerade
 sudo firewall-cmd --reload
 
 # Start Wireguard
