@@ -47,7 +47,7 @@ Address = 10.10.10.2/24
 
 [Peer]
 PublicKey = $(sudo cat /etc/wireguard/srvkey-public)
-Allowed IPs = 0.0.0.0/0
+AllowedIPs = 0.0.0.0/0
 Endpoint = 10.0.17.160:51820
 PersistentKeepalive = 25
 EOF
