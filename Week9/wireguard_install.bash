@@ -8,6 +8,8 @@
 
 # Installing Wireguard packages
 curl -Lo /etc/yum.repos.d/wireguard.repo https://copr.fedorainfracloud.org/coprs/jdoss/wireguard/repo/epel-7/jdoss-wireguard-epel-7.repo
+sudo yum clean all
+sudo yum makecache
 
 sudo yum update -y
 sudo yum install wireguard-dkms wireguard-tools -y
