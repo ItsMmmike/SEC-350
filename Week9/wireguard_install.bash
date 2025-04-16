@@ -26,6 +26,7 @@ sudo cat > /etc/wireguard/wg0.conf << EOF
 Address = 10.10.10.1/24
 SaveConfig = true
 PrivateKey = $(sudo cat /etc/wireguard/srvkey-private)
+ListenPort = 51820
 PreUp = sysctl -w net.ipv4.ip_forward=1
 PreUp = iptables -t nat -A PREROUTING -p tcp -d 10.10.10.1 --dport 3389 -j DNAT --to-destination 172.16.200.11:3389
 PreUp = iptables -t nat -A POSTROUTING -o $netadapter
