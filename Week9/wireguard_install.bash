@@ -60,5 +60,5 @@ sudo firewall-cmd --permanent --zone=public --add-masquerade
 sudo firewall-cmd --reload
 
 # Start Wireguard
-#sudo wg-quick up wg0
+sudo systemctl enable wg-quick@wg0
 sudo systemctl start wg-quick@wg0
