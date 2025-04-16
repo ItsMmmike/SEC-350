@@ -30,10 +30,6 @@ SaveConfig = true
 PrivateKey = $(sudo cat /etc/wireguard/srvkey-private)
 ListenPort = 51820
 PreUp = sysctl -w net.ipv4.ip_forward=1
-PreUp = iptables -t nat -A PREROUTING -p tcp -d 10.10.10.1 --dport 3389 -j DNAT --to-destination 172.16.200.11:3389
-PreUp = iptables -t nat -A POSTROUTING -o $netadapter
-PostDown = iptables -t nat -D PREROUTING -p tcp -d 10.10.10.1 --dport 3389 -j DNAT --to-destination 172.16.200.11:3389
-PostDown = iptables -t nat -D POSTROUTING -o $netadapter
 
 [Peer]
 PublicKey = $(sudo cat /etc/wireguard/client01-public)
@@ -49,10 +45,17 @@ Address = 10.10.10.2/24
 
 [Peer]
 PublicKey = $(sudo cat /etc/wireguard/srvkey-public)
-AllowedIPs = 0.0.0.0/0
+AllowedIPs = 10.10.10.1/24
 Endpoint = 10.0.17.160:51820
 PersistentKeepalive = 25
 EOF
 
+# Firewalld config
+sudo firewall-cmd --permanetn --zone=public --add-port=51820/udp
+sudo firewall-cmd --permanent --add-interface=wg0 --zone=internal
+sudo firewall-cmd --permanetn --zone=internal --add-masquerade
+sudo firewall-cmd --reload
+
 # Start Wireguard
-sudo wg-quick up wg0
+#sudo wg-quick up wg0
+sudo systemctl start wg-quick@wg0
