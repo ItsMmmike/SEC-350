@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script used to install Wireguard server for SEC-350 VPN Project
+# Script used to install Wireguard server for SEC-350 VPN Project | By: Mike N
 # To Use: wget this file, then Run as sudo --> "bash wireguard_install.bash"
 
 # Useful Resources:
