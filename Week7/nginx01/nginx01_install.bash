@@ -1,7 +1,7 @@
 #!/bin/bash
-# Script used to setup nginx and wazuh agent service onto the dhcp01 device --> **Run as standard user
+# Script used to setup nginx and wazuh agent service onto the nginx01 device --> **Run as standard user
 
-# Update Packages and install dhcpd
+# Update Packages and install nginx
 sudo apt update
 sudo apt install nginx -y
 sudo apt install vim -y
